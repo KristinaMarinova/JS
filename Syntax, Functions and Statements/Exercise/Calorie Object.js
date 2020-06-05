@@ -1,9 +1,10 @@
-function calorieObject(arr){
-    let register = {}; 
+function solve(input) {
+    const obj = {};
 
-    for (let i = 0; i < arr.length; i+=2) {
-        register[arr[i]] = +(arr[i + 1]);
+    for (let i = 0; i < input.length; i += 2) {
+        obj[input[i]] = +input[i + 1];
     }
-    console.log(register);
+    console.log(obj);
 }
-calorieObject(['Yoghurt', '48', 'Rise', '138', 'Apple', '52']);
+
+solve(['Yoghurt', '48', 'Rise', '138', 'Apple', '52']);
