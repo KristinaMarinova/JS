@@ -1,19 +1,17 @@
-function sumOfTowns(array) {
+function sumOfTowns(array){
+    let object = {};
 
-    let obj = {};
-
-    for (let i = 0; i < array.length; i += 2) {
+    for (let i = 0; i < array.length; i+=2) {
         const key = array[i];
         const value = array[i + 1];
-
-        if (obj.hasOwnProperty(key)) {
-            obj[key] += Number(value);
+        
+        if(object.hasOwnProperty(key)){
+            object[key] += Number(value);
         }
         else{
-            obj[key] = Number(value);
+            object[key] = Number(value);
         }
-
     }
-    console.log(JSON.stringify(obj));
+    console.log(JSON.stringify(object));
 }
 sumOfTowns(['Sofia','20','Varna','3','Sofia','5','Varna','4']);

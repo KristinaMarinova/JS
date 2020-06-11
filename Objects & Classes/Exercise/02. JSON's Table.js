@@ -1,34 +1,26 @@
-function JSONEmployeeToHtml(params) {
-    let sanitizeInput = str => str
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-
-    let ident = '\t';
-    let html = `<table>\n`;
-
-    for (const jsonEmp of params) {
-        let empData = JSON.parse(jsonEmp);
-        html += `${ident}<tr>\n`;
-
-        html += `${ident}${ident}<td>${sanitizeInput(empData.name)}</td>\n`;
-        html += `${ident}${ident}<td>${sanitizeInput(empData.position)}</td>\n`;
-
-        let salary = Number.isFinite(empData.salary)
-            ? Number(empData.salary)
-            : sanitizeInput(empData.salary);
-
-        html += `${ident}${ident}<td>${salary}</td>\n`;
-        html += `${ident}<tr>\n`; // !!! Wrong test - Judge expects <tr> but Valid closing tag must be </tr> !!!
+function jsonTable(input) {
+    const rows = [];
+    for (let line of input) {
+        const person = JSON.parse(line);
+        rows.push(createRow(person));
     }
 
-    html += '</table>';
-    return html;
+    console.log('<table>');
+    console.log(rows.join('\n'));
+    console.log('</table>');
+
+    function createRow(person) {
+        return [
+            '\t<tr>',
+            `\t\t<td>${person.name}</td>`,
+            `\t\t<td>${person.position}</td>`,
+            `\t\t<td>${person.salary}</td>`,
+            '\t</tr>'
+        ].join('\n');
+    }
 }
 
-console.log(JSONEmployeeToHtml(['{"name":"Pesho","position":"Promenliva","salary":100000}',
+jsonTable(['{"name":"Pesho","position":"Promenliva","salary":100000}',
     '{"name":"Teo","position":"Lecturer","salary":1000}',
     '{"name":"Georgi","position":"Lecturer","salary":1000}']
-));
+);
