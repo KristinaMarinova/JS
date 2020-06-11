@@ -1,5 +1,6 @@
 function storeCatalogue(arr) {
     let products = new Map();
+
     for (let line of arr) {
         let data = line.split(/\b\s:\s\b/);
         let letter = line[0][0];
@@ -10,7 +11,9 @@ function storeCatalogue(arr) {
             products.set(letter,products.get(letter)+","+data);
         }
     }
+
     let myProducts = new Map([...products.entries()].sort());
+    
     for (let [letter, items] of myProducts) {
         console.log(letter);
         if(items.constructor !== Array){
