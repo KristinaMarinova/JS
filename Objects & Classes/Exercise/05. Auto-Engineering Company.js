@@ -1,29 +1,32 @@
-function printProductionStatistics(params) {
-    let stat = new Map();
+function autoEngineeringCompany(input) {
+    const cars = new Map();
 
-    for (const row of params) {
-        let [brand, model, coundAsString] = row.split(' | ');
-        let producedCount = Number(coundAsString);
+    for (let line of input) {
+        let tokens = line.split(" | ");
+        let brand = tokens[0];
+        let model = tokens[1];
+        let count = Number(tokens[2]);
 
-        if (!stat.get(brand)) {
-            stat.set(brand, new Map().set(model, producedCount));
-        } else if (!stat.get(brand).get(model)) {
-            stat.get(brand).set(model, producedCount);
-        } else {
-            stat.set(brand, stat.get(brand).set(model, stat.get(brand).get(model) + producedCount));
+        if (!cars.get(brand)) {
+            cars.set(brand, new Map());
         }
+        if (!cars.get(brand).get(model)) {
+            cars.get(brand).set(model, 0)
+        }
+
+        cars.get(brand).set(model, cars.get(brand).get(model) + count);
     }
 
-    let result = [...stat]
-        .map(b => b[0] + '\n' + [...b[1]]
-            .map(kvp => `###${kvp[0]} -> ${kvp[1]}`)
-            .join('\n'))
-        .join('\n');
+    for(let [brand, modelCount] of cars){
+        console.log(brand);
 
-    console.log(result);
+        for(let [model, count] of modelCount){
+            console.log(`###${model} -> ${count}`);
+        }
+    }
 }
 
-printProductionStatistics(
+autoEngineeringCompany(
     ['Audi | Q7 | 1000',
         'Audi | Q6 | 100',
         'BMW | X5 | 1000',

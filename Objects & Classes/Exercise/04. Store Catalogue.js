@@ -1,34 +1,20 @@
-function storeCatalogue(arr) {
-    let products = new Map();
+function storeCatalogue(input) {
+    const catalog = {};
 
-    for (let line of arr) {
-        let data = line.split(/\b\s:\s\b/);
-        let letter = line[0][0];
-        if (!products.has(letter)) {
-            products.set(letter, data);
+    for (let line of input) {
+        const [product, price] = line.split(' : ');
+        const letter = product[0];
+        if (!catalog.hasOwnProperty(letter)) {
+            catalog[letter] = {};
         }
-        else {
-            products.set(letter,products.get(letter)+","+data);
-        }
+        catalog[letter][product] = price;
     }
-
-    let myProducts = new Map([...products.entries()].sort());
-    
-    for (let [letter, items] of myProducts) {
-        console.log(letter);
-        if(items.constructor !== Array){
-            items=items.split(',');
-        }
-        let products = [];
-        for (let i = 0; i < items.length; i+=2) {
-            let product =items[i];
-            let price =items[i+1];
-            let line = product+": "+price;
-            products.push(line);
-            products.sort();
-        }
-        for (let product of products) {
-            console.log(`  ${product}`);
+    const sortedKeys = Object.keys(catalog).sort((a, b) => a.localeCompare(b));
+    for (let key of sortedKeys) {
+        console.log(key);
+        const sortedProducts = Object.keys(catalog[key]).sort((a, b) => a.localeCompare(b));
+        for (let product of sortedProducts) {
+            console.log(`  ${product}: ${catalog[key][product]}`);
         }
     }
 }
