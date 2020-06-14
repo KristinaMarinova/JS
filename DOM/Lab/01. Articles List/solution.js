@@ -5,8 +5,8 @@ function createArticle() {
 	let newP = document.createElement("p");
 	let newH3 = document.createElement("h3");
 
-	if(titleInput.value !== "" && textInput.value !== ""){
-		newH3.textContent= titleInput.value;
+	if (titleInput.value != "" && textInput.value != "") {
+		newH3.textContent = titleInput.value;
 		newP.textContent = textInput.value;
 
 		let newArticle = document.createElement("article");
@@ -14,7 +14,6 @@ function createArticle() {
 		newArticle.appendChild(newP);
 
 		let sectionTag = document.getElementById("articles");
-
 		sectionTag.appendChild(newArticle);
 
 		titleInput.value = "";
