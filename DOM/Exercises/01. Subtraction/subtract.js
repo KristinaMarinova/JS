@@ -1,8 +1,5 @@
 function subtract() {
-    let firstField = document.getElementById("firstNumber");
-    let secondField  = document.getElementById("secondNumber");
-    let resultField  = document.getElementById("result");
-
-    let result = Number(firstField.value) - Number(secondField.value);
-    resultField.textContent = result;
+    document.getElementById('result').textContent =
+        Number(document.getElementById('firstNumber').value) -
+        Number(document.getElementById('secondNumber').value);
 }

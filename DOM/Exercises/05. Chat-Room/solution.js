@@ -1,6 +1,6 @@
 function solve() {
+  let container = document.getElementById("chat_messages");
    let button = document.getElementById("send");
-   let container = document.getElementById("chat_messages");
 
   button.addEventListener("click", function (){ 
 

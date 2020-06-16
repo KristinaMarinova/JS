@@ -1,13 +1,15 @@
 function addItem() {
-    let itemText = document.getElementById("newItemText").value;
-    let itemValue = document.getElementById("newItemValue").value;
+    const textInput = document.querySelector('#newItemText');
+    const valueInput = document.querySelector('#newItemValue');
+    const text = textInput.value;
+    const value = valueInput.value;
 
-    let foundSelect = document.getElementById("menu");
-    let element = document.createElement("option"); 
-    element.text = itemText;
-    element.value = itemValue;
-    foundSelect.appendChild(element);
+    const option = document.createElement('option'); 
+    option.textContent = text;
+    option.value = value;
 
-    document.getElementById("newItemText").value = '';
-    document.getElementById("newItemValue").value = '';
+    document.querySelector('#menu').appendChild(option);
+
+    textInput.value = '';
+    valueInput.value = '';
 }
