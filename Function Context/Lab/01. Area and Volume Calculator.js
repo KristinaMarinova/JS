@@ -1,26 +1,12 @@
 function solve(area, vol, input) {
-    class Figure{
-        constructor(x,y,z){
-            this.x = Math.abs(x);
-            this.y = Math.abs(y);
-            this.z = Math.abs(z);
-            this.GetArea = area;
-            this.GetVol = vol;
-        }
+    let objects= JSON.parse(input);
+
+    function calculate(obj){
+        let areaObj = Math.abs(area.call(obj));
+        let volumeObj = Math.abs(vol.call(obj));
+        return {area: areaObj, volume:volumeObj}
     }
-    let objects = JSON.parse(input);
-    let result = [];
-
-    objects.forEach(element => {
-        let fig = new Figure(element.x, element.y, element.z);
-
-        let areaRes = fig.GetArea();
-        let volRes = fig.GetVol();
-
-        let newObj = {area: areaRes, volume: volRes}
-        result.push(newObj);
-    });
-    return result;
+    return objects.map(calculate);
 }
 
 function area() {
