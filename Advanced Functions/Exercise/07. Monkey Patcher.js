@@ -50,10 +50,10 @@ let post = {
 
 monkeyPatcher.call(post, 'upvote');
 monkeyPatcher.call(post, 'downvote');
-console.log(monkeyPatcher.call(post, 'score')); // [127, 127, 0, 'controversial']
+console.log(monkeyPatcher.call(post, 'score'));
 
 for (let i = 0; i < 50; i++) {
     monkeyPatcher.call(post, 'downvote');
 }
 
-console.log(monkeyPatcher.call(post, 'score')); // [139, 189, -50, 'unpopular']
+console.log(monkeyPatcher.call(post, 'score'));
