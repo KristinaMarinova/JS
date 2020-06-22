@@ -1,18 +1,18 @@
-function solve(){
-    let table = document.getElementsByTagName("tbody")[0];
-    let allRows = Array.from(table.children);
- 
-    table.addEventListener("click", mark);
- 
-    function mark(event){
-       let currentBackground = event.target.parentElement.style.background;
- 
-       allRows.forEach(element => {
-         element.style.background = ""; 
-       });
- 
-       if(currentBackground === ""){
-          event.target.parentElement.style.background = "#413f5e";
-       }
-    }
- }
+function solve() {
+   const tbody = document.querySelector('tbody');
+   const items = tbody.querySelectorAll('tr');
+   tbody.addEventListener('click', parseTable);
+
+   function parseTable(e) {
+      const row = e.target.parentNode;
+
+      if (row.nodeName === 'TR') {
+         if (row.style.backgroundColor !== '') {
+            row.style.backgroundColor = '';
+         } else {
+            [...items].forEach(i => i.style.backgroundColor = '');
+            row.style.backgroundColor = '#413f5e';
+         }
+      }
+   }
+}

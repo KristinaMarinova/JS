@@ -1,13 +1,11 @@
 function getArticleGenerator(articles) {
-    let container = document.getElementById("content");
-    let count = Array.from(container.children).length;
+    const content = document.querySelector('#content');
 
-    return function(){
-        if(articles.length > 0){
-            let content = articles.shift();
-            let newArticle = document.createElement("article");
-            container.appendChild(newArticle);
-            document.getElementById("content").lastChild.textContent = content;
+    return function () {
+        if (articles.length > 0) {
+            const article = document.createElement('article');
+            article.textContent = articles.shift();
+            content.appendChild(article);
         }
-    }   
+    }
 }
