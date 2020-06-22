@@ -1,17 +1,15 @@
 function getFibonator () {
-    let n = 0;
+    let current = 0;
+    let next = 1;
  
-    return function fib(){
-        
-        let arr = [1, 1];
+    function fibonator(){
+      let newNumber = current + next;
+      current = next;
+      next = newNumber;
 
-        for (let i = 2; i < n + 1; i++){
-          arr.push(arr[i - 2] + arr[i -1])
-        }
-
-        n++;
-       return arr[n-1]
+      return current;
     }
+    return fibonator;
 }
 
 let fib = getFibonator();
