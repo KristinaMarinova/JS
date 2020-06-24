@@ -1,13 +1,13 @@
 (function stringExtension() {
     String.prototype.ensureStart = function (str) {
-        let start = this.substring(0, str.length); 
-        if (start !== str) { 
-            return str + this; 
+        let start = this.substring(0, str.length);
+        if (start !== str) {
+            return str + this;
         }
         return this.toString();
     };
     String.prototype.ensureEnd = function (str) {
-        let end = this.substring(this.length - str.length); 
+        let end = this.substring(this.length - str.length);
         if (end !== str) {
             return this + str;
         }
@@ -25,8 +25,8 @@
         if (n < 4) {
             return '.'.repeat(n);
         }
-        if (stringLength > n) { 
-            if (this.indexOf(' ') !== -1) { 
+        if (stringLength > n) {
+            if (this.indexOf(' ') !== -1) {
                 let arr = this.split(' ');
                 let res = [];
 
@@ -37,12 +37,15 @@
                         res.push(element);
                     }
                 }
+
                 let stringText = res.join(' ');
                 return stringText.substring(0, stringText.length) + '...';
-            } else {
+            }
+            else {
                 return this.substring(0, n - 3) + '...';
             }
-        } else { 
+        }
+        else {
             return this.toString();
         }
     };
