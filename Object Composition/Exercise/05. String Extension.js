@@ -4,7 +4,7 @@
         if (start !== str) { 
             return str + this; 
         }
-        return this.toString(); // ?
+        return this.toString();
     };
     String.prototype.ensureEnd = function (str) {
         let end = this.substring(this.length - str.length); 
