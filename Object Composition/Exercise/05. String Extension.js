@@ -1,13 +1,13 @@
 (function stringExtension() {
     String.prototype.ensureStart = function (str) {
-        let start = this.substring(0, str.length); // vzemi dumata
-        if (start !== str) { //ako q nqma dobavi q
-            return str + this; // hi kum tekushtoto izrechenie
+        let start = this.substring(0, str.length); 
+        if (start !== str) { 
+            return str + this; 
         }
         return this.toString(); // ?
     };
     String.prototype.ensureEnd = function (str) {
-        let end = this.substring(this.length - str.length); // krisi(5) - ei(2) = (3)
+        let end = this.substring(this.length - str.length); 
         if (end !== str) {
             return this + str;
         }
@@ -25,8 +25,8 @@
         if (n < 4) {
             return '.'.repeat(n);
         }
-        if (stringLength > n) { //split po speis i zamesti s tochki ako cqlata dyljina <= n
-            if (this.indexOf(' ') !== -1) { // ako ima speisove
+        if (stringLength > n) { 
+            if (this.indexOf(' ') !== -1) { 
                 let arr = this.split(' ');
                 let res = [];
 
@@ -42,7 +42,7 @@
             } else {
                 return this.substring(0, n - 3) + '...';
             }
-        } else { // vurni syshtiq ako str < n
+        } else { 
             return this.toString();
         }
     };
