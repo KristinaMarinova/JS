@@ -12,7 +12,7 @@ function solve() {
         let description = document.getElementById("description").value;
         let dueDate = document.getElementById("date").value;
 
-        if (task !== "" && description !== "" && dueDate !== "") { // ако има нещо в полетата
+        if (task !== "" && description !== "" && dueDate !== "") {
             let newArticle = document.createElement("article");
             let header = document.createElement("h3");
             let paragraphOne = document.createElement("p");
@@ -20,46 +20,43 @@ function solve() {
             let newDiv = document.createElement("div");
             let startButton = document.createElement("button");
             let deleteButton = document.createElement("button");
-            header.textContent = task;      // сложи името на задачата като h3
-            newArticle.appendChild(header); // сложи хедъра в артикъла
-            paragraphOne.textContent = `Description: ${description}`; // p1: какъв е Description-а
-            newArticle.appendChild(paragraphOne);// сложи параграфа в артикъла
-            paragraphTwo.textContent = `Due Date: ${dueDate}`; // p2: каква е датата
-            newArticle.appendChild(paragraphTwo); // сложи датата в артикъла
-            newDiv.className = "flex"; // див с клас име флекс
-            startButton.textContent = "Start"; // на бутона старт сложи текст "старт"
-            startButton.className = "green"; // и клас име "green"
+            header.textContent = task;
+            newArticle.appendChild(header);
+            paragraphOne.textContent = `Description: ${description}`;
+            newArticle.appendChild(paragraphOne);
+            paragraphTwo.textContent = `Due Date: ${dueDate}`;
+            newArticle.appendChild(paragraphTwo);
+            newDiv.className = "flex";
+            startButton.textContent = "Start";
+            startButton.className = "green";
 
-            startButton.addEventListener("click", start); // при цъкване на бутона старт
-            newDiv.appendChild(startButton); // сложи бутона в дива
-            deleteButton.textContent = "Delete"; // бутон за триене
-            deleteButton.className = "red"; // с клас име червено
-            deleteButton.addEventListener("click", deleteArticle); // при цъкване на бутона изтриване
-            newDiv.appendChild(deleteButton); // сложи бутона в дива
-            newArticle.appendChild(newDiv); // към артикъла добави дива с двата бутона
+            startButton.addEventListener("click", start);
+            newDiv.appendChild(startButton);
+            deleteButton.textContent = "Delete";
+            deleteButton.className = "red";
+            deleteButton.addEventListener("click", deleteArticle);
+            newDiv.appendChild(deleteButton);
+            newArticle.appendChild(newDiv);
 
             outputSection.getElementsByTagName("div")[1].appendChild(newArticle); 
-            // към колоната дибави новия артикъл
 
             function start() { 
-                startButton.remove(); // при старт махаме бутона
+                startButton.remove(); 
 
-                let finishButton = document.createElement("button"); // съдаване на бутон за finish
-                finishButton.textContent = "Finish"; // 
+                let finishButton = document.createElement("button");
+                finishButton.textContent = "Finish";
                 finishButton.className = "orange";
-                finishButton.addEventListener("click", finish); // при кликване на бутона finish
-                newDiv.appendChild(finishButton); // към дива с бутоните добавяме новия бутон
+                finishButton.addEventListener("click", finish);
+                newDiv.appendChild(finishButton); 
 
                 document.getElementById("in-progress").appendChild(newArticle);
-                // към колоната добавяме новия артикъл
 
-                function finish() { // при кликване на финиш
-                    newDiv.remove() // махаме всички бутони
+                function finish() {
+                    newDiv.remove()
                     completeSection.getElementsByTagName("div")[1].appendChild(newArticle);
-                    //добавяме го в колоната с приключени
                 }
             }
-            function deleteArticle() { // трием артикъла
+            function deleteArticle() {
                 newArticle.remove();
             }
         }
