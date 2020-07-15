@@ -13,16 +13,16 @@ describe("isOddOrEven function", function(){
         assert.equal(actual, undefined);
     });
 
-    it("should return correct result with an even length", function(){
-        expect(isOddOrEven("aaaa")).to.equal("even", "Function did not return the correct result!");
+    it("should return result with an even length", function(){
+        expect(isOddOrEven("aaaa")).to.equal("even");
     });
-    it("should return correct result with an odd length", function(){
-        expect(isOddOrEven("aaaaa")).to.equal("odd", "Function did not return the correct result!");
+    it("should return result with an odd length", function(){
+        expect(isOddOrEven("aaaaa")).to.equal("odd");
     });
 
     it("should return correct result with multiple consecutive checks", function(){
-        expect(isOddOrEven("aaa")).to.equal("odd", "Function did not return the correct result!");
-        expect(isOddOrEven("bbb")).to.equal("odd", "Function did not return the correct result!");
-        expect(isOddOrEven("cccc")).to.equal("even", "Function did not return the correct result!");
+        expect(isOddOrEven("aaa")).to.equal("odd");
+        expect(isOddOrEven("bbb")).to.equal("odd");
+        expect(isOddOrEven("cccc")).to.equal("even");
     });
 });
