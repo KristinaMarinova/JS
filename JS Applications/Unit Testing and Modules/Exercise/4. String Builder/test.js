@@ -1,9 +1,9 @@
-const StringBuilder = require("./string-builder.js");
+const StringBuilder = require("./solution.js");
 
 let expect = require("chai").expect;
 let assert = require("chai").assert;
 
-describe("string-builder.js", function(){
+describe("string-builder function", function(){
     describe("Instantiation", function(){
         it("should return correct result with string parameter", function(){
             expect(() => new StringBuilder("hello")).to.not.throw();

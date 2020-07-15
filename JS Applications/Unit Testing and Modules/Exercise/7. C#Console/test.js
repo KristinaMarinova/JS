@@ -1,4 +1,4 @@
-const Console = require("./specialConsole.js");
+const Console = require("./solution.js");
 
 let expect = require("chai").expect;
 let assert = require("chai").assert;

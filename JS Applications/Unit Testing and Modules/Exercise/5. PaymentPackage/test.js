@@ -1,4 +1,4 @@
-const PaymentPackage = require("./PaymentPackage.js");
+const PaymentPackage = require("./solution.js");
 
 let expect = require("chai").expect;
 let assert = require("chai").assert;
