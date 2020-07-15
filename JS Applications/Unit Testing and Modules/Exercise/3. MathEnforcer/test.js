@@ -1,4 +1,4 @@
-const mathEnforcer = require("./mathEnforcer.js");
+const mathEnforcer = require("./solution.js");
 
 let expect = require("chai").expect;
 let assert = require("chai").assert;
