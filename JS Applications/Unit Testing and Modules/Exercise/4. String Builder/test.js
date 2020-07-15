@@ -38,7 +38,7 @@ describe("string-builder.js", function(){
             instance.append(", there");
             let actualResult = instance._stringArray;
             let expectResult = Array.from(", there");
-            assert.deepEqual(actualResult, expectResult, "The function did not return correct result!");
+            assert.deepEqual(actualResult, expectResult );
         });
         it("should return throw error with non-string parameter", function(){
             expect(() => instance.append(5).to.throw(TypeError));
@@ -59,7 +59,7 @@ describe("string-builder.js", function(){
             instance.prepend('User, ');
             let actualResult = instance._stringArray;
             let expectResult = Array.from("User, " + ", there");
-            assert.deepEqual(actualResult, expectResult, "The function did not return correct result!");
+            assert.deepEqual(actualResult, expectResult );
         });
         it("should return throw error with non-string parameter", function(){
             expect(() => instance.prepend(1).to.throw(TypeError));
@@ -81,7 +81,7 @@ describe("string-builder.js", function(){
             instance.insertAt('woop',5 );
             let actualResult = instance._stringArray;
             let expectResult = Array.from("User,woop hello, there");
-            assert.deepEqual(actualResult, expectResult, "The function did not return correct result!");
+            assert.deepEqual(actualResult, expectResult );
         });
         it("should return throw error with non-string parameter", function(){
             expect(() => instance.insertAt(1, 5).to.throw(TypeError));
@@ -104,7 +104,7 @@ describe("string-builder.js", function(){
             instance.remove(6, 3);
             let actualResult = instance._stringArray;
             let expectResult = Array.from("User,w hello, there");
-            assert.deepEqual(actualResult, expectResult, "The function did not return correct result!");
+            assert.deepEqual(actualResult, expectResult );
         });
     }); 
     
@@ -124,7 +124,7 @@ describe("string-builder.js", function(){
         it("should return correct result", function(){
             let actualResult = instance.toString();
             let expectResult = "User,w hello, there";
-            assert.equal(actualResult, expectResult, "The function did not return correct result!");
+            assert.equal(actualResult, expectResult );
         });
     });
 })

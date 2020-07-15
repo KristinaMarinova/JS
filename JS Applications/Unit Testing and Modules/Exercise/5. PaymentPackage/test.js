@@ -17,7 +17,7 @@ describe("PaymentPackage", function(){
         it("should return correct result with string name parameter", function(){
             let instance = new PaymentPackage("name", 100);
             instance.name = "newName";
-            assert.equal(instance.name, "newName", "The function did not return correct result!"); 
+            assert.equal(instance.name, "newName" ); 
         });
         it("should throw error with non-number value parameter", function(){
             expect(() => new PaymentPackage("name", "aaa")).to.throw("Value must be a non-negative number");
@@ -28,7 +28,7 @@ describe("PaymentPackage", function(){
         it("should return correct result with number value parameter", function(){
             let instance = new PaymentPackage("name", 100);
             instance.value = 200;
-            assert.equal(instance.value, 200, "The function did not return correct result!"); 
+            assert.equal(instance.value, 200 ); 
 
         });
         it("should throw error when set string VAT", function(){
@@ -42,7 +42,7 @@ describe("PaymentPackage", function(){
         it("should return correct result with number VAT", function(){
             let instance = new PaymentPackage("name", 100);
             instance.VAT = 30;
-            assert.equal(instance.VAT, 30, "The function did not return correct result!"); 
+            assert.equal(instance.VAT, 30 ); 
 
         });
         it("should throw error when set non-boolean active", function(){
@@ -52,7 +52,7 @@ describe("PaymentPackage", function(){
         it("should return correct result with boolean active", function(){
             let instance = new PaymentPackage("name", 100);
             instance.active = false;
-            assert.equal(instance.active, false, "The function did not return correct result!"); 
+            assert.equal(instance.active, false ); 
         });
 
         it("It should have initialized toString method", function() {
@@ -63,10 +63,10 @@ describe("PaymentPackage", function(){
         it("It should set correct properties", function() {
             let instance = new PaymentPackage("name", 100);
 
-            assert.equal(instance.name, "name", "The function did not return correct result!");   
-            assert.equal(instance.value, 100, "The function did not return correct result!"); 
-            assert.equal(instance.active, true, "The function did not return correct result!");  
-            assert.equal(instance.VAT, 20, "The function did not return correct result!");      
+            assert.equal(instance.name, "name" );   
+            assert.equal(instance.value, 100 ); 
+            assert.equal(instance.active, true );  
+            assert.equal(instance.VAT, 20 );      
         });
     });
 

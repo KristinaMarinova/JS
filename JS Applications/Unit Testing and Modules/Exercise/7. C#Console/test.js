@@ -6,16 +6,16 @@ let assert = require("chai").assert;
 describe("Console", function(){
     it("should return passed string", function(){
         let result = Console.writeLine("hello");
-        assert.equal(result, "hello", "The function did not return correct result!");
+        assert.equal(result, "hello" );
     });
     it("should return passed empty string", function(){
         let result = Console.writeLine("");
-        assert.equal(result, "", "The function did not return correct result!");
+        assert.equal(result, "" );
     });
     it("should return as string passed object", function(){
         let obj = {name: "Ivan", age: 20};
         let actualResult = Console.writeLine(obj);
-        assert.equal(actualResult, JSON.stringify(obj), "The function did not return correct result!");
+        assert.equal(actualResult, JSON.stringify(obj) );
     });
 
 
@@ -36,6 +36,6 @@ describe("Console", function(){
     it("should return correct result", function(){
         let actualResult = Console.writeLine("The sum of {0} and {1} is {2}", 3, 4, 7);
         let expectedResult = "The sum of 3 and 4 is 7";
-        assert.equal(actualResult, expectedResult, "The function did not return correct result!");
+        assert.equal(actualResult, expectedResult );
     });
 })

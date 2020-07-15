@@ -23,15 +23,15 @@ describe("Warehouse", function(){
         it("should return correct result with non-negative capacity parameter", function(){
             let products = {'Food': {}, 'Drink': {}};
 
-            assert.equal(instance.capacity, 10, "The function did not return correct result!");
-            assert.deepEqual(instance.availableProducts, products, "The function did not return correct result!"); 
+            assert.equal(instance.capacity, 10 );
+            assert.deepEqual(instance.availableProducts, products ); 
         });         
         it("should return correct result with non-negative capacity parameter", function(){
-            assert.equal(instance.capacity, 10, "The function did not return correct result!"); 
+            assert.equal(instance.capacity, 10 ); 
         });      
         it("should return correct result with non-negative capacity parameter", function(){
             instance.capacity = 20;
-            assert.equal(instance.capacity, 20, "The function did not return correct result!"); 
+            assert.equal(instance.capacity, 20 ); 
         });     
         it("should throw error with negative capacity parameter", function(){
             expect(() => instance = new Warehouse(-10)).to.throw("Invalid given warehouse space");
@@ -54,7 +54,7 @@ describe("Warehouse", function(){
             let instance =  new Warehouse(10);
             let result = instance.addProduct("Food", "Orange", 5);
             let expectResult = instance.availableProducts.Food;
-            assert.deepEqual(result, expectResult, "The function did not return correct result!"); 
+            assert.deepEqual(result, expectResult ); 
         }); 
         it("should throw error with full capacity", function(){
             let instance =  new Warehouse(10);
@@ -69,7 +69,7 @@ describe("Warehouse", function(){
             instance.addProduct("Food", "Lemon", 3);
             let result = instance.orderProducts("Food");
             let expectResult = {Lemon: 3, Orange: 2};
-            assert.deepEqual(result, expectResult, "The function did not return correct result!"); 
+            assert.deepEqual(result, expectResult ); 
         }); 
     });
 
@@ -79,7 +79,7 @@ describe("Warehouse", function(){
             instance.addProduct("Food", "Orange", 2);
             instance.addProduct("Food", "Lemon", 3);
             let result = instance.occupiedCapacity();
-            assert.deepEqual(result, 5, "The function did not return correct result!"); 
+            assert.deepEqual(result, 5 ); 
         }); 
     });
 
@@ -100,7 +100,7 @@ describe("Warehouse", function(){
                 "Product type - [Drink]"
             ];
         
-            assert.equal(instance.revision(), result.join("\n"), "The function did not return correct result!"); 
+            assert.equal(instance.revision(), result.join("\n") ); 
         }); 
         it("should return correct result when warehouse is not empty", function(){
             let instance =  new Warehouse(100);
@@ -111,7 +111,7 @@ describe("Warehouse", function(){
                 "- Water 20"
             ];
         
-            assert.equal(instance.revision(), result.join("\n"), "The function did not return correct result!"); 
+            assert.equal(instance.revision(), result.join("\n") ); 
         }); 
  
         it('should return result if we have food and drinks drinks', function () {
@@ -130,7 +130,7 @@ describe("Warehouse", function(){
                 "- Fanta 30"
             ];
         
-            assert.equal(instance.revision(), result.join("\n"), "The function did not return correct result!"); 
+            assert.equal(instance.revision(), result.join("\n") ); 
  
         });
     });
@@ -147,7 +147,7 @@ describe("Warehouse", function(){
 
             let expectResult = {Orange: 3};
         
-            assert.deepEqual(instance.scrapeAProduct("Orange", 2), expectResult, "The function did not return correct result!"); 
+            assert.deepEqual(instance.scrapeAProduct("Orange", 2), expectResult ); 
         }); 
         it("should return correct result when product is found", function(){
             let instance =  new Warehouse(10);
@@ -155,7 +155,7 @@ describe("Warehouse", function(){
 
             let expectResult = {Orange: 0};
         
-            assert.deepEqual(instance.scrapeAProduct("Orange", 7), expectResult, "The function did not return correct result!"); 
+            assert.deepEqual(instance.scrapeAProduct("Orange", 7), expectResult ); 
         }); 
     });
 })
@@ -174,15 +174,15 @@ describe("Warehouse", function(){
         it("should return correct result with non-negative capacity parameter", function(){
             let products = {'Food': {}, 'Drink': {}};
 
-            assert.equal(instance.capacity, 10, "The function did not return correct result!");
-            assert.deepEqual(instance.availableProducts, products, "The function did not return correct result!"); 
+            assert.equal(instance.capacity, 10 );
+            assert.deepEqual(instance.availableProducts, products ); 
         });         
         it("should return correct result with non-negative capacity parameter", function(){
-            assert.equal(instance.capacity, 10, "The function did not return correct result!"); 
+            assert.equal(instance.capacity, 10 ); 
         });      
         it("should return correct result with non-negative capacity parameter", function(){
             instance.capacity = 20;
-            assert.equal(instance.capacity, 20, "The function did not return correct result!"); 
+            assert.equal(instance.capacity, 20 ); 
         });     
         it("should throw error with negative capacity parameter", function(){
             expect(() => instance = new Warehouse(-10)).to.throw("Invalid given warehouse space");
@@ -205,7 +205,7 @@ describe("Warehouse", function(){
             let instance =  new Warehouse(10);
             let result = instance.addProduct("Food", "Orange", 5);
             let expectResult = instance.availableProducts.Food;
-            assert.deepEqual(result, expectResult, "The function did not return correct result!"); 
+            assert.deepEqual(result, expectResult ); 
         }); 
         it("should throw error with full capacity", function(){
             let instance =  new Warehouse(10);
@@ -220,7 +220,7 @@ describe("Warehouse", function(){
             instance.addProduct("Food", "Lemon", 3);
             let result = instance.orderProducts("Food");
             let expectResult = {Lemon: 3, Orange: 2};
-            assert.deepEqual(result, expectResult, "The function did not return correct result!"); 
+            assert.deepEqual(result, expectResult ); 
         }); 
     });
 
@@ -230,7 +230,7 @@ describe("Warehouse", function(){
             instance.addProduct("Food", "Orange", 2);
             instance.addProduct("Food", "Lemon", 3);
             let result = instance.occupiedCapacity();
-            assert.deepEqual(result, 5, "The function did not return correct result!"); 
+            assert.deepEqual(result, 5 ); 
         }); 
     });
 
@@ -251,7 +251,7 @@ describe("Warehouse", function(){
                 "Product type - [Drink]"
             ];
         
-            assert.equal(instance.revision(), result.join("\n"), "The function did not return correct result!"); 
+            assert.equal(instance.revision(), result.join("\n") ); 
         }); 
         it("should return correct result when warehouse is not empty", function(){
             let instance =  new Warehouse(100);
@@ -262,7 +262,7 @@ describe("Warehouse", function(){
                 "- Water 20"
             ];
         
-            assert.equal(instance.revision(), result.join("\n"), "The function did not return correct result!"); 
+            assert.equal(instance.revision(), result.join("\n") ); 
         }); 
  
         it('should return result if we have food and drinks drinks', function () {
@@ -281,7 +281,7 @@ describe("Warehouse", function(){
                 "- Fanta 30"
             ];
         
-            assert.equal(instance.revision(), result.join("\n"), "The function did not return correct result!"); 
+            assert.equal(instance.revision(), result.join("\n") ); 
  
         });
     });
@@ -298,7 +298,7 @@ describe("Warehouse", function(){
 
             let expectResult = {Orange: 3};
         
-            assert.deepEqual(instance.scrapeAProduct("Orange", 2), expectResult, "The function did not return correct result!"); 
+            assert.deepEqual(instance.scrapeAProduct("Orange", 2), expectResult ); 
         }); 
         it("should return correct result when product is found", function(){
             let instance =  new Warehouse(10);
@@ -306,7 +306,7 @@ describe("Warehouse", function(){
 
             let expectResult = {Orange: 0};
         
-            assert.deepEqual(instance.scrapeAProduct("Orange", 7), expectResult, "The function did not return correct result!"); 
+            assert.deepEqual(instance.scrapeAProduct("Orange", 7), expectResult ); 
         }); 
     });
 })
