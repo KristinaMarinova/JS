@@ -2,7 +2,7 @@ function logger() {
     let userInfo = document.getElementById('user-info');
     let login = document.getElementById('Login');
     login.addEventListener('click', () => {
-        firebase.auth().signInWithEmailAndPassword('test@mail.com', 'passswords123')
+        firebase.auth().signInWithEmailAndPassword('test@abv.bg', '123456')
             .catch((error) => {
                 let errorCode = error.code;
                 let errorMessage = error.message;
