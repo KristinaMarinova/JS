@@ -1,15 +1,15 @@
 {
-  "name": "Lab-Solution",
+  "name": "lab",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "handlebars": "^4.7.6"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "handlebars": "^4.1.0"
-  }
+  "license": "ISC"
 }
