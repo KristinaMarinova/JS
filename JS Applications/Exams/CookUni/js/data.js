@@ -2,7 +2,7 @@ import { beginRequest, endRequest, showError } from './notification.js';
 import API from './api.js';
 
 const endpoints = {
-    RECIPES: 'data/recipes', //table in backendles
+    RECIPES: 'data/recipes',
     RECIPE_BY_ID: 'data/recipes/'
 
 };
