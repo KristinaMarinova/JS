@@ -1,74 +1,93 @@
 function solve() {
-   let addButton = document.querySelector('form button');
-   addButton.addEventListener('click', add);
+   const sectionArticles = document.querySelector('main > section');
 
-   function add(event) {
-      event.preventDefault();
-      let author = document.getElementById("creator").value;
-      let title = document.getElementById("title").value;
-      let category = document.getElementById("category").value;
-      let contenet = document.getElementById("content").value;
+   const inputAuthor = document.getElementById('creator');
+   const inputTitle = document.getElementById('title');
+   const inputCategory = document.getElementById('category');
+   const inputContent = document.getElementById('content');
 
-      let newArticle = document.createElement('article');
-      let header = document.createElement('h1');
-      header.textContent = title;
-      newArticle.appendChild(header);
+   const ulSectionArchive = document.querySelector('section.archive-section > ul');
 
-      let firstParagraph = document.createElement('p');
-      firstParagraph.textContent = 'Category:';
-      let firstStrong = document.createElement('strong');
-      firstStrong.textContent = category;
-      firstParagraph.appendChild(firstStrong);
-      newArticle.appendChild(firstParagraph);
+   const btnCreate = document.querySelector('button.btn.create');
 
-      let secondParagraph = document.createElement('p');
-      secondParagraph.textContent = 'Creator:';
-      let secondStrong = document.createElement('strong');
-      secondStrong.textContent = author;
-      secondParagraph.appendChild(secondStrong);
-      newArticle.appendChild(secondParagraph);
+   btnCreate.addEventListener('click', createArticle);
 
-      let thirdParagraph = document.createElement('p');
-      thirdParagraph.textContent = contenet;
-      newArticle.appendChild(thirdParagraph);
+   function createArticle(e) {
+      e.preventDefault();
 
-      let div = document.createElement('div');
-      div.className = 'buttons';
+      const btnDelete = createElement('button', 'Delete', { className: 'btn delete' });
+      const btnArchive = createElement('button', 'Archive', { className: 'btn archive' });
 
-      let btnDelete = document.createElement('button');
-      btnDelete.className = 'btn delete';
-      btnDelete.textContent = 'Delete';
       btnDelete.addEventListener('click', deleteArticle);
-      div.appendChild(btnDelete);
-
-      let btnArchive = document.createElement('button');
-      btnArchive.className = 'btn archive';
-      btnArchive.textContent = 'Archive';
       btnArchive.addEventListener('click', archiveArticle);
-      div.appendChild(btnArchive);
 
-      newArticle.appendChild(div);
+      const article = createElement('article', [
+         createElement('h1', inputTitle.value),
+         createElement('p', ['Category:', createElement('strong', inputCategory.value)]),
+         createElement('p', ['Creator:', createElement('strong', inputAuthor.value)]),
+         createElement('p', inputContent.value),
+         createElement('div', [btnDelete, btnArchive], { className: 'buttons' })
+      ]);
 
-      document.getElementsByTagName('section')[1].appendChild(newArticle);
+      sectionArticles.appendChild(article);
 
-      function deleteArticle() {
-         newArticle.remove();
-      }
-      function archiveArticle() {
-         let currentList = Array.from(document.querySelectorAll(".archive-section ul li"));
-         let currentListItems = currentList.map(x => x.textContent);
+      inputAuthor.value = '';
+      inputTitle.value = '';
+      inputCategory.value = '';
+      inputContent.value = '';
 
-         currentListItems.push(title);
-         currentListItems.sort((a, b) => a.localeCompare(b));
-
-         let ul = document.querySelector(".archive-section ul");
-         ul.textContent = "";
-         currentListItems.forEach(element => {
-            let newLi = document.createElement("li");
-            newLi.textContent = element;
-            ul.appendChild(newLi);
-         });
-         newArticle.remove();
-      }
    }
+
+   function deleteArticle(e) {
+      e.preventDefault();
+      e.target.parentElement.parentElement.remove();
+   }
+
+   function archiveArticle(e) {
+      e.preventDefault();
+
+      const articleName = e.target.parentElement.parentElement.firstChild.textContent;
+      const liToAdd = createElement('li', articleName);
+      ulSectionArchive.appendChild(liToAdd);
+
+      e.target.parentElement.parentElement.remove();
+      sortArticles();
+   }
+
+   function sortArticles() {
+      const articles = Array.from(ulSectionArchive.querySelectorAll('li'))
+         .sort((l1, l2) => (l1.textContent.toLowerCase())
+            .localeCompare
+            (l2.textContent.toLowerCase()));
+
+      ulSectionArchive.innerHTML = '';
+
+      articles.forEach(a => ulSectionArchive.appendChild(a));
+   }
+
+
+   function createElement(type, content, attributes) {
+      const result = document.createElement(type);
+
+      if (attributes !== undefined) {
+         Object.assign(result, attributes);
+      }
+
+      if (Array.isArray(content)) {
+         content.forEach(append);
+      } else {
+         append(content);
+      }
+
+      function append(node) {
+         if (typeof node === 'string') {
+            node = document.createTextNode(node);
+         }
+
+         result.appendChild(node);
+      }
+
+      return result;
+   }
+
 }
