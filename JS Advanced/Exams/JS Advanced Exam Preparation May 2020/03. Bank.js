@@ -57,10 +57,11 @@ class Bank {
             throw new Error(`We have no customer with this ID!`);
         }
 
-        let result = `Bank name: ${this._bankName}\nCustomer name: ${customer.firstName} ${customer.lastName}\nCustomer ID: ${customer.personalId}\nTotal Money: ${customer.totalMoney}$\n`;
+        let result = `Bank name: ${this._bankName}\nCustomer name: ${customer.firstName} ${customer.lastName}\nCustomer ID: ${customer.personalId}\nTotal Money: ${customer.totalMoney}$\nnTransactions:\n`;
+
         let transactions = [];
 
-       for (let i = customer.transactions.length - 1; i >= 0; i--) {
+        for (let i = customer.transactions.length - 1; i >= 0; i--) {
             transactions.push(`${i + 1}. ` + customer.transactions[i]);
         }
 
@@ -68,5 +69,4 @@ class Bank {
 
         return result.trim();
     }
-
 }
