@@ -1,100 +1,100 @@
 function pressHouse() {
     class Article {
         constructor(title, content) {
-            this.title = title,
-                this.content = content
-        }
-        toString() {
-            let result = [
-                `Title: ${this.title}`,
-                `Content: ${this.content}`,
-            ]
-            return result.join('\n');
-        }
-    }
-    class ShortReports extends Article {
-        constructor(title, content, originalResearch) {
-            super(title, content);
-            this.comments = [];
-            this.originalResearch = originalResearch
+            this.title = title;
+            this.content = content;
         }
 
-        get content() {
-            return this._content;
+        toString() {
+            const result = [
+                `Title: ${this.title}`,
+                `Content: ${this.content}`
+            ];
+            return result.join('\n');
         }
-        set content(value) {
-            if (value.length >= 150) {
+
+    }
+
+    class ShortReports extends Article {
+        constructor(title, content, originalResearch) {
+            if (content.length >= 150) {
                 throw new Error('Short reports content should be less then 150 symbols.');
             }
-            this._content = value;
+            super(title, content);
+            this.originalResearch = originalResearch;
+            this.comments = [];
         }
+
         get originalResearch() {
             return this._originalResearch;
         }
+
         set originalResearch(value) {
-            if (!value.hasOwnProperty("title") || !value.hasOwnProperty("author")) {
-                throw new Error("The original research should have author and title.");
+            if (!value.title || !value.author) {
+                throw new Error('The original research should have author and title.');
             }
             this._originalResearch = value;
         }
+
         addComment(comment) {
-            this.comments.push(comment);
+            this.comments.push(this.content);
             return 'The comment is added.';
         }
+
         toString() {
-            let result = [
-                `Title: ${this.title}`,
-                `Content: ${this.content}`,
+            const result = [
+                super.toString(),
                 `Original Research: ${this.originalResearch.title} by ${this.originalResearch.author}`
-            ]
+            ];
+
             if (this.comments.length > 0) {
                 result.push('Comments:');
-
-                this.comments.forEach(element => {
-                    result.push(element);
-                });
+                this.comments.forEach(c => result.push(c));
             }
+
             return result.join('\n');
         }
 
     }
+
     class BookReview extends Article {
         constructor(title, content, book) {
             super(title, content);
             this.book = book;
             this.clients = [];
         }
+
         addClient(clientName, orderDescription) {
             if (this.clients.some(c => c.clientName === clientName && c.orderDescription === orderDescription)) {
-                throw new Error("This client has already ordered this review.");
-
+                throw new Error('This client has already ordered this review.');
             }
             this.clients.push({
-                clientName: clientName,
-                orderDescription: orderDescription
-            })
+                clientName,
+                orderDescription
+            });
+
             return `${clientName} has ordered a review for ${this.book.name}`;
         }
+
         toString() {
-            let result = [
-                `Title: ${this.title}`,
-                `Content: ${this.content}`,
+            const result = [
+                super.toString(),
                 `Book: ${this.book.name}`
-            ]
+            ];
 
             if (this.clients.length > 0) {
-                result.push("Orders:");
-
-                this.clients.forEach(element => {
-                    result.push(`${element.clientName} - ${element.orderDescription}`);
-                });
+                result.push(`Orders:`);
+                this.clients.forEach(c => result.push(`${c.clientName} - ${c.orderDescription}`));
             }
-            return result.join("\n");
+
+
+            return result.join('\n');
         }
     }
+
     return {
         Article,
         ShortReports,
         BookReview
-    }
+    };
 }
