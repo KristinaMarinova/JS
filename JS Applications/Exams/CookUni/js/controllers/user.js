@@ -7,7 +7,7 @@ export async function registerPage() {
         footer: await this.load('./templates/common/footer.hbs')
     };
 
-    this.partial('./templates/user/register.hbs'); // na tazi str zaredi h i f
+    this.partial('./templates/user/register.hbs');
 }
 
 export async function loginPage() {
